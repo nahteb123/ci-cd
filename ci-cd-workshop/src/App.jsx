@@ -28,7 +28,6 @@ function App() {
                         <button className="theme-toggle" onClick={toggleTheme}>
                             {isDarkMode ? '☀️ Light' : '🌙 Dark'}
                         </button>
-                        <button className="btn-secondary">Login</button>
                     </div>
                 </div>
             </nav>
