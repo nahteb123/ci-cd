@@ -1,13 +1,28 @@
-/* 1. VARIABLES GLOBALES */
-:root {
-  --bg-dark: #0f172a;
+/* 1. CONFIGURATION DES THÈMES */
+.dark-theme {
+  --bg-color: #0f172a;
   --card-bg: #111827;
-  --accent-blue: #2563eb;
-  --accent-hover: #1d4ed8;
   --text-main: #ffffff;
   --text-muted: #94a3b8;
   --border-color: #1e293b;
   --input-bg: #0f172a;
+  --nav-bg: rgba(22, 31, 49, 0.8);
+}
+
+.light-theme {
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --input-bg: #f1f5f9;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+}
+
+/* Variables fixes (communes aux deux thèmes) */
+:root {
+  --accent-blue: #2563eb;
+  --accent-hover: #1d4ed8;
 }
 
 /* 2. RESET ET BASE */
@@ -18,30 +33,32 @@
 }
 
 body {
-  background: var(--bg-dark);
   font-family: 'Inter', sans-serif;
-  color: var(--text-main);
 }
 
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Important pour que le footer reste en bas */
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* 3. NAVBAR */
 .navbar {
   width: 100%;
   height: 70px;
-  background-color: rgba(22, 31, 49, 0.8);
+  background-color: var(--nav-bg);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
+  transition: all 0.3s ease;
 }
 
 .nav-content {
@@ -76,13 +93,31 @@ body {
 }
 
 .nav-links a:hover, .nav-links a.active {
-  color: white;
+  color: var(--text-main);
+}
+
+/* Bouton Spécifique pour le Theme Toggle */
+.theme-toggle {
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-blue);
 }
 
 .btn-secondary {
   background: transparent;
   border: 1px solid var(--accent-blue);
-  color: white;
+  color: var(--text-main);
   padding: 8px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -91,15 +126,16 @@ body {
 
 .btn-secondary:hover {
   background: var(--accent-blue);
+  color: white;
 }
 
 /* 4. MAIN CONTENT & CARD */
 .container-main {
-  flex: 1; /* Prend tout l'espace disponible entre nav et footer */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 120px 2rem 60px 2rem; /* padding-top pour ne pas être sous la nav */
+  padding: 120px 2rem 60px 2rem;
 }
 
 .card {
@@ -109,7 +145,8 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 20px;
   padding: 2.5rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .card-header {
@@ -154,17 +191,17 @@ h1 {
 
 label {
   margin-bottom: 0.6rem;
-  color: #cbd5e1;
+  color: var(--text-muted);
   font-size: 0.9rem;
   font-weight: 500;
 }
 
 input, select, textarea {
   background: var(--input-bg);
-  border: 1px solid #334155;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 1rem;
-  color: white;
+  color: var(--text-main);
   font-size: 1rem;
   outline: none;
   transition: all 0.2s ease;
@@ -172,7 +209,7 @@ input, select, textarea {
 
 input:focus, select:focus, textarea:focus {
   border-color: var(--accent-blue);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 textarea {
@@ -200,9 +237,10 @@ textarea {
 /* 6. FOOTER */
 .footer {
   width: 100%;
-  background-color: rgba(15, 23, 42, 0.9);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: var(--nav-bg);
+  border-top: 1px solid var(--border-color);
   padding: 30px 0;
+  transition: all 0.3s ease;
 }
 
 .footer-content {

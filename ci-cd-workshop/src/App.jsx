@@ -1,9 +1,18 @@
+import { useState, useEffect } from 'react' // Import des hooks
 import './App.css'
 
 function App() {
+    // 1. État pour le thème (on vérifie si l'utilisateur a une préférence système ou on met dark par défaut)
+    const [isDarkMode, setIsDarkMode] = useState(true);
+
+    // 2. Fonction pour changer de thème
+    const toggleTheme = () => {
+        setIsDarkMode(!isDarkMode);
+    };
+
     return (
-        <div className="app-container">
-            {/* 1. LA NAVBAR (Ton 2ème bloc) */}
+        /* 3. On applique dynamiquement la classe 'dark-mode' ou 'light-mode' */
+        <div className={`app-container ${isDarkMode ? 'dark-theme' : 'light-theme'}`}>
             <nav className="navbar">
                 <div className="nav-content">
                     <div className="nav-logo">
@@ -15,12 +24,15 @@ function App() {
                         <li><a href="#">Docs</a></li>
                     </ul>
                     <div className="nav-actions">
+                        {/* BOUTON DE CHANGEMENT DE THÈME */}
+                        <button className="theme-toggle" onClick={toggleTheme}>
+                            {isDarkMode ? '☀️ Light' : '🌙 Dark'}
+                        </button>
                         <button className="btn-secondary">Login</button>
                     </div>
                 </div>
             </nav>
 
-            {/* 2. LE CONTENU PRINCIPAL (Fusion des deux) */}
             <main className="container-main">
                 <div className="card">
                     <div className="card-header">
@@ -33,7 +45,7 @@ function App() {
                         </p>
                     </div>
 
-                    <form className="contact-form">
+                    <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
                         <div className="input-group">
                             <label>Full Name</label>
                             <input type="text" placeholder="John Doe" />
@@ -63,7 +75,6 @@ function App() {
                 </div>
             </main>
 
-            {/* 3. LE FOOTER (Ton 2ème bloc) */}
             <footer className="footer">
                 <div className="footer-content">
                     <div className="footer-info">

@@ -1,22 +1,23 @@
-# ci-cd
-
+````markdown
 # CI/CD Workshop
 
 ## Description
 
-Projet React réalisé pour mettre en pratique :
+Projet React réalisé dans le cadre d’un TP Git et CI/CD.
 
-- Git
-- GitHub
+Le projet a pour objectif de mettre en pratique :
+
 - les commits conventionnels
-- le versionning sémantique
-- les pull requests
 - le travail collaboratif
+- les Pull Requests
+- les branches Git
+- le versionning sémantique
 - pre-commit
+- les bonnes pratiques Git
 
 ---
 
-# Technologies
+# Technologies utilisées
 
 - React
 - Vite
@@ -26,78 +27,170 @@ Projet React réalisé pour mettre en pratique :
 
 ---
 
-# Fonctionnalités
+# Fonctionnalités réalisées
 
-- Formulaire de contact
-- Header
-- Footer
+## Mehdy
+
+- création du formulaire de contact
+- responsive design mobile et tablette
+
+## Ethan
+
+- création du header
+- création du footer
 
 ---
 
-# Installation
-
-## Cloner le projet
-
-```bash
-git clone <url-du-repo>
-Aller dans le dossier
-cd ci-cd-workshop
-Installer les dépendances
-npm install
-Lancer le projet
-npm run dev
-Workflow Git
+# Structure des branches
 
 Le projet utilise les branches suivantes :
 
-feature/*
-→ dev
-→ main
-Exemple
+```text
+branche-mehdy
+branche-ethan
+dev
+main
+```
 
-Créer une branche feature :
+## Description
 
-git checkout -b feature/contact-form
+### branche-mehdy
 
-Commit :
+Branche utilisée pour le développement du formulaire et du responsive design.
 
+### branche-ethan
+
+Branche utilisée pour le développement du header et du footer.
+
+### dev
+
+Branche de développement utilisée pour regrouper les fonctionnalités avant validation.
+
+### main
+
+Branche stable utilisée pour les releases finales.
+
+---
+
+# Workflow utilisé
+
+## 1. Création d’une branche
+
+```bash
+git checkout -b branche-mehdy
+```
+
+## 2. Développement de la fonctionnalité
+
+## 3. Ajout des fichiers
+
+```bash
+git add .
+```
+
+## 4. Commit conventionnel
+
+```bash
 git commit -m "feat: create contact form"
+```
 
-Push :
+## 5. Push de la branche
 
-git push -u origin feature/contact-form
+```bash
+git push -u origin branche-mehdy
+```
 
-Puis création d’une Pull Request vers dev.
+## 6. Création d’une Pull Request vers `dev`
 
-Commits conventionnels
+## 7. Review et merge dans `dev`
 
-Exemples :
+## 8. Merge final de `dev` vers `main`
 
-feat: create form
-fix: resolve navbar bug
-docs: update README
-Versionning
+---
+
+# Commits conventionnels
+
+Exemples utilisés :
+
+```bash
+feat: create contact form
+
+style: improve responsive design
+
+feat: create application header
+
+feat: create application footer
+```
+
+---
+
+# Versionning
 
 Le projet utilise le Semantic Versioning.
 
-Exemple :
+Première version :
 
+```text
 v1.0.0
-Pre-commit
+```
+
+---
+
+# Installation du projet
+
+## Cloner le dépôt
+
+```bash
+git clone <url-du-repo>
+```
+
+## Aller dans le dossier
+
+```bash
+cd ci-cd-workshop
+```
+
+## Installer les dépendances
+
+```bash
+npm install
+```
+
+## Lancer le projet
+
+```bash
+npm run dev
+```
+
+---
+
+# Pre-commit
 
 Installation :
 
+```bash
 pip install pre-commit
+```
 
 Activation :
 
+```bash
 pre-commit install
-Première release
+```
+
+---
+
+# Release finale
+
+```bash
 git checkout main
 git merge dev
 git push origin main
+```
 
 Création du tag :
 
+```bash
 git tag v1.0.0
 git push origin v1.0.0
+```
