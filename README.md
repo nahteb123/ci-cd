@@ -1,22 +1,22 @@
-# ci-cd
-
 # CI/CD Workshop
 
 ## Description
 
-Projet React réalisé pour mettre en pratique :
+Projet React réalisé dans le cadre d’un TP Git et CI/CD.
 
-- Git
-- GitHub
+Le projet a pour objectif de mettre en pratique :
+
 - les commits conventionnels
-- le versionning sémantique
-- les pull requests
 - le travail collaboratif
+- les Pull Requests
+- les branches Git
+- le versionning sémantique
 - pre-commit
+- les bonnes pratiques Git
 
 ---
 
-# Technologies
+# Technologies utilisées
 
 - React
 - Vite
@@ -26,19 +26,79 @@ Projet React réalisé pour mettre en pratique :
 
 ---
 
-# Fonctionnalités
+# Fonctionnalités réalisées
 
-- Formulaire de contact
-- Header
-- Footer
+## Mehdy
+
+- création du formulaire de contact
+
+## Ethan
+
+- création du header
+- création du footer
 
 ---
 
-# Installation
+# Structure des branches
 
-## Cloner le projet
+Le projet utilise les branches suivantes :
 
-```bash
+```text
+branche-mehdy
+branche-ethan
+dev
+main
+Description
+branche-mehdy
+
+Branche utilisée pour le développement du formulaire de contact.
+
+branche-ethan
+
+Branche utilisée pour le développement du header et du footer.
+
+dev
+
+Branche de développement utilisée pour regrouper les fonctionnalités avant validation.
+
+main
+
+Branche stable utilisée pour les releases finales.
+
+Workflow utilisé
+1. Création d’une branche
+
+Exemple :
+
+git checkout -b branche-mehdy
+2. Développement de la fonctionnalité
+3. Ajout des fichiers
+git add .
+4. Commit conventionnel
+git commit -m "feat: create contact form"
+5. Push de la branche
+git push -u origin branche-mehdy
+6. Création d’une Pull Request vers dev
+7. Review et merge dans dev
+8. Merge final de dev vers main
+Commits conventionnels
+
+Exemples utilisés :
+
+feat: create contact form
+
+feat: create application header
+
+feat: create application footer
+Versionning
+
+Le projet utilise le Semantic Versioning.
+
+Première version :
+
+v1.0.0
+Installation du projet
+Cloner le dépôt
 git clone <url-du-repo>
 Aller dans le dossier
 cd ci-cd-workshop
@@ -46,43 +106,6 @@ Installer les dépendances
 npm install
 Lancer le projet
 npm run dev
-Workflow Git
-
-Le projet utilise les branches suivantes :
-
-feature/*
-→ dev
-→ main
-Exemple
-
-Créer une branche feature :
-
-git checkout -b feature/contact-form
-
-Commit :
-
-git commit -m "feat: create contact form"
-
-Push :
-
-git push -u origin feature/contact-form
-
-Puis création d’une Pull Request vers dev.
-
-Commits conventionnels
-
-Exemples :
-
-feat: create form
-fix: resolve navbar bug
-docs: update README
-Versionning
-
-Le projet utilise le Semantic Versioning.
-
-Exemple :
-
-v1.0.0
 Pre-commit
 
 Installation :
@@ -92,7 +115,7 @@ pip install pre-commit
 Activation :
 
 pre-commit install
-Première release
+Release finale
 git checkout main
 git merge dev
 git push origin main
