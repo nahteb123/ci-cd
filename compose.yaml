@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  app:
+    build: ./ci-cd-workshop
+    container_name: ci-cd-app
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./ci-cd-workshop:/app
+      - /app/node_modules
