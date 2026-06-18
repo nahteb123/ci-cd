@@ -194,3 +194,9 @@ Création du tag :
 git tag v1.0.0
 git push origin v1.0.0
 ```
+
+### Conteneurisation Docker
+
+Documentation complète :
+
+[Consulter le README Docker](./ci-cd-workshop/READMEContainer.md)
