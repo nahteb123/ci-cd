@@ -1,0 +1,46 @@
+namespace: cicd-workshop
+
+replicaCount: 1
+
+image:
+  repository: ci-cd-web
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 5173
+
+ingress:
+  enabled: true
+  className: traefik
+  host: ci-cd.local
+  path: /
+  pathType: Prefix
+
+config:
+  APP_ENV: "development"
+  WELCOME_MESSAGE: "Bienvenue à l'atelier CI/CD"
+
+secret:
+  enabled: true
+  stringData: {}
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 250m
+    memory: 256Mi
+
+probes:
+  readiness:
+    path: /
+    initialDelaySeconds: 5
+    periodSeconds: 10
+  liveness:
+    path: /
+    initialDelaySeconds: 15
+    periodSeconds: 20
