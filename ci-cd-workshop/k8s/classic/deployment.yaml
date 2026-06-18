@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-cd-web
+  namespace: cicd-workshop
+  labels:
+    app: ci-cd-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ci-cd-web
+  template:
+    metadata:
+      labels:
+        app: ci-cd-web
+    spec:
+      containers:
+        - name: web
+          image: nahteb123/ci-cd-workshop:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5173
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+          envFrom:
+            - configMapRef:
+                name: cicd-web-config
+            - secretRef:
+                name: cicd-web-secret
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5173
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5173
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            failureThreshold: 3
