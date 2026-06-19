@@ -1,0 +1,10 @@
+---
+app_image: ci-cd-web:latest
+app_container_name: ci-cd-web
+
+app_host_port: 5173
+app_container_port: 5173
+
+app_env:
+  APP_ENV: development
+  
