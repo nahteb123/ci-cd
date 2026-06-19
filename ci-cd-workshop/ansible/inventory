@@ -1,0 +1,2 @@
+[debian]
+192.168.56.101 ansible_user=test ansible_become=true

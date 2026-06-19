@@ -1,0 +1,7 @@
+---
+- name: Deploy application
+  hosts: debian
+  become: true
+
+  roles:
+    - deploy_app
