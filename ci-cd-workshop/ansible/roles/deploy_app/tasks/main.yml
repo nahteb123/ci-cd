@@ -1,0 +1,4 @@
+---
+- name: Test role deploy_app
+  debug:
+    msg: "Role deploy_app chargé avec succès"
